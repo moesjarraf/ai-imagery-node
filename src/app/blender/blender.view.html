@@ -1,0 +1,45 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">Blend images</h2>
+    <span flex></span>
+    <md-button class="md-raised" ng-click="train()" ng-disabled="disableTrain">Start training</md-button>
+  </div>
+</md-toolbar>
+
+<md-content layout="row">
+  <md-card layout="column">
+    <img id="input" src="/src/assets/images/flower.png" class="md-card-image">
+    <md-card-footer>
+      Training input
+    </md-card-footer>
+  </md-card>
+  <md-card layout="column">
+    <img id="output" ng-src="{{url}}" class="md-card-image">
+    <md-card-footer>
+      Training output
+    </md-card-footer>
+  </md-card>
+</md-content>
+
+<md-content layout="row">
+  <md-card layout="column">
+    <img id="original" src="/src/assets/images/flower_original.png" class="md-card-image">
+    <md-card-footer>
+      Test input
+    </md-card-footer>
+  </md-card>
+  <md-card layout="column" ng-show="trainingStarted">
+    <a class="thumbnail canvas-fix">        
+      <canvas id="canvas-demo3" width="200" height="200"></canvas>
+    </a>
+    <md-card-footer>
+      Test output #{{ iterations }}
+    </md-card-footer>
+  </md-card>
+  <md-card layout="column" ng-show="!trainingStarted">
+    <img src="/src/assets/images/question_mark.png" class="md-card-image">
+    <md-card-footer>
+      Expected output
+    </md-card-footer>
+  </md-card>
+</md-content>

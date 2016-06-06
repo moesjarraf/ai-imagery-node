@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="gcg.app" ng-controller="AppCtrl" lang="en">
+  <head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <title ng-bind="app.title"></title>
+    <base href="/"/>
+
+    <!-- external css -->
+    <link type='text/css' rel='stylesheet' href='//fonts.googleapis.com/css?family=Cuprum'/>
+
+    <!-- vendor css -->
+    <!-- build:css /vendor.css -->
+    <link type='text/css' rel='stylesheet' href='/src/vendor/angular-material/angular-material.css'>
+    <!-- endbuild -->
+
+    <!-- local css -->
+    <!-- build:css /style.css -->
+    <link type='text/css' rel='stylesheet' href='/src/assets/stylesheets/core.css'>
+    <link type='text/css' rel='stylesheet' href='/src/assets/stylesheets/blender.css'>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!-- views -->
+    <div ng-include="'/src/app/_partials/navbar.html'"></div>
+    <div ui-view></div>
+
+    <!-- electron dependencies -->
+    <script type='text/javascript'>
+      (function () {
+        if (typeof require == 'undefined') return;
+
+        var path = require('path');
+        module.paths.push(path.join(process.env.root, '/node_modules'));
+
+        if (!window.$ && !window.jQuery) window.$ = window.jQuery = require('jquery');
+      })();
+    </script>
+
+    <!-- vendor js -->
+    <!-- build:js /vendor.js -->
+    <script src="/src/vendor/angular/angular.js"></script>
+    <script src="/src/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/src/vendor/angular-animate/angular-animate.js"></script>
+    <script src="/src/vendor/angular-aria/angular-aria.js"></script>
+    <script src="/src/vendor/angular-messages/angular-messages.js"></script>
+    <script src="/src/vendor/angular-material/angular-material.js"></script>
+    <!-- endbuild -->
+
+    <!-- app js -->
+    <!-- build:js /app.js -->
+    <script src="/src/app/app.module.js"></script>
+    <script src="/src/app/app.router.js"></script>
+    <script src="/src/app/app.controller.js"></script>
+    <script src="/src/app/blender/blender.module.js"></script>
+    <script src="/src/app/blender/blender.router.js"></script>
+    <script src="/src/app/blender/blender.controller.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
