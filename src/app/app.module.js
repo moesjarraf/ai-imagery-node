@@ -4,6 +4,7 @@
   var app = angular.module('gcg.app', [
     'ui.router',
     'ngMaterial',
-    'gcg.blender'
+    'gcg.synaptic',
+    'gcg.neuralStyle'
   ]);
 })();

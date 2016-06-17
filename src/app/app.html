@@ -18,7 +18,7 @@
     <!-- local css -->
     <!-- build:css /style.css -->
     <link type='text/css' rel='stylesheet' href='/src/assets/stylesheets/core.css'>
-    <link type='text/css' rel='stylesheet' href='/src/assets/stylesheets/blender.css'>
+    <link type='text/css' rel='stylesheet' href='/src/assets/stylesheets/synaptic.css'>
     <!-- endbuild -->
   </head>
   <body>
@@ -32,7 +32,7 @@
         if (typeof require == 'undefined') return;
 
         var path = require('path');
-        module.paths.push(path.join(process.env.root, '/node_modules'));
+        module.paths.push(path.join(process.cwd(), '/node_modules'));
 
         if (!window.$ && !window.jQuery) window.$ = window.jQuery = require('jquery');
       })();
@@ -53,9 +53,12 @@
     <script src="/src/app/app.module.js"></script>
     <script src="/src/app/app.router.js"></script>
     <script src="/src/app/app.controller.js"></script>
-    <script src="/src/app/blender/blender.module.js"></script>
-    <script src="/src/app/blender/blender.router.js"></script>
-    <script src="/src/app/blender/blender.controller.js"></script>
+    <script src="/src/app/synaptic/synaptic.module.js"></script>
+    <script src="/src/app/synaptic/synaptic.router.js"></script>
+    <script src="/src/app/synaptic/synaptic.controller.js"></script>
+    <script src="/src/app/neural-style/neural-style.module.js"></script>
+    <script src="/src/app/neural-style/neural-style.router.js"></script>
+    <script src="/src/app/neural-style/neural-style.controller.js"></script>
     <!-- endbuild -->
   </body>
 </html>

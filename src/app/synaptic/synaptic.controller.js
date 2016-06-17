@@ -1,16 +1,18 @@
+// @todo: cleanup code
+
 (function () {
     'use strict';
 
-    const synaptic = require('synaptic');
-    const Neuron = synaptic.Neuron;
-    const Layer = synaptic.Layer;
-    const Network = synaptic.Network;
-    const Trainer = synaptic.Trainer;
-    const Architect = synaptic.Architect;
+    const Synaptic = require('synaptic');
+    const Neuron = Synaptic.Neuron;
+    const Layer = Synaptic.Layer;
+    const Network = Synaptic.Network;
+    const Trainer = Synaptic.Trainer;
+    const Architect = Synaptic.Architect;
 
-    var blender = angular.module('gcg.blender');
+    var synaptic = angular.module('gcg.synaptic');
 
-    function BlenderCtrl ($rootScope, $scope, $timeout, $mdToast) {
+    function SynapticCtrl ($rootScope, $scope, $timeout, $mdToast) {
       $scope.filter = "blur";
       $scope.url = "/src/assets/images/flower_after.png";
       $scope.disableTrain = false;
@@ -113,11 +115,11 @@
       }
     }
 
-    blender.controller('BlenderCtrl', [
+    synaptic.controller('SynapticCtrl', [
         '$rootScope',
         '$scope',
         '$timeout',
         '$mdToast',
-        BlenderCtrl
+        SynapticCtrl
     ]);
 })();

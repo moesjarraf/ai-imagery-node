@@ -6,7 +6,7 @@
   function router ($urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');
-    $urlRouterProvider.otherwise('blender');
+    $urlRouterProvider.otherwise('synaptic');
   }
 
   app.config([

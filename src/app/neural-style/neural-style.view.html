@@ -1,0 +1,36 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">Learning art styles with "Neural style"</h2>
+    <span flex></span>
+    <md-button class="md-raised" ng-click="NeuralStyle.start()" ng-disabled="NeuralStyle.started">Start</md-button>
+  </div>
+</md-toolbar>
+
+<md-content ng-if="NeuralStyle.options">
+  <p>Results are shown every <b>{{ NeuralStyle.options.save_iter }}</b> iteration(s)</p>
+  <p>Current iteration <b>{{ NeuralStyle.iterations }}</b></p>
+</md-content>
+
+<md-content layout="row" ng-if="NeuralStyle.inputContent">
+  <md-card layout="column">
+    <img ng-src="{{ NeuralStyle.inputContent }}" class="md-card-image">
+    <md-card-footer>
+      Input content
+    </md-card-footer>
+  </md-card>
+  <md-card layout="column">
+    <img ng-src="{{ NeuralStyle.inputStyle }}" class="md-card-image">
+    <md-card-footer>
+      Input style
+    </md-card-footer>
+  </md-card>
+</md-content>
+
+<md-content layout="row" ng-if="NeuralStyle.output">
+  <md-card layout="column">
+    <img ng-src="{{ NeuralStyle.output }}" class="md-card-image">
+    <md-card-footer>
+      Output
+    </md-card-footer>
+  </md-card>
+</md-content>

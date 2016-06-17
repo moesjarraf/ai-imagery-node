@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var blender = angular.module('gcg.blender', [
+  var synaptic = angular.module('gcg.synaptic', [
     'ui.router'
   ]);
 })();

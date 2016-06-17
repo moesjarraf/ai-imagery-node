@@ -8,13 +8,11 @@ const electronApp   = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 let mainWindow;
 
-process.env.root = path.normalize(__dirname);
-
 // init express
-expressApp.use(express.static(process.env.root));
+expressApp.use(express.static(process.cwd()));
 
 expressApp.use(function (req, res) {
-  res.sendFile(path.join(process.env.root, '/src/app/app.html'));
+  res.sendFile(path.join(process.cwd(), '/src/app/app.html'));
 });
 
 server.listen(5000, () => {
@@ -22,7 +20,7 @@ server.listen(5000, () => {
   function createWindow () {
     mainWindow = new BrowserWindow({width: 1280, height: 720});
     mainWindow.loadURL(`http://localhost:5000`);
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     mainWindow.on('closed', function () {
       mainWindow = null;

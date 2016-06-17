@@ -1,4 +1,6 @@
-node_modules/*
-.tmp/*
-/nbproject/*
-/src/vendor/*
+node_modules
+.tmp
+temp
+/nbproject
+/src/vendor
+/src/neural-style
