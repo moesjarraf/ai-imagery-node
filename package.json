@@ -1,6 +1,6 @@
 {
-  "name": "image-morpher-node",
-  "description": "Morphs images in node with neural networks",
+  "name": "ai-imagery-node",
+  "description": "Showcases AI Imagery techniques in Node.js",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",

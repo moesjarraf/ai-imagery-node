@@ -1,5 +1,5 @@
 {
-  "name": "image-morpher-node",
+  "name": "ai-imagery-node",
   "dependencies": {
     "angular": "^1.5.6",
     "angular-material": "^1.0.9",

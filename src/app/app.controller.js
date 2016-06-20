@@ -7,7 +7,7 @@
     $rootScope.app = $rootScope.app || {};
 
     angular.extend($rootScope.app, {
-      title: 'Game content generator',
+      title: 'AI Imagery techniques in Node.js',
       language: 'en-US',
     });
   }

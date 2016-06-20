@@ -2,23 +2,32 @@
   <div class="md-toolbar-tools">
     <h2 class="md-flex">Learning art styles with "Neural style"</h2>
     <span flex></span>
-    <md-button class="md-raised" ng-click="NeuralStyle.start()" ng-disabled="NeuralStyle.started">Start</md-button>
+    <md-button ng-if="!NeuralStyle.started" class="md-raised" ng-click="NeuralStyle.start()">Start</md-button>
+    <md-button ng-if="NeuralStyle.started" class="md-raised" ng-click="NeuralStyle.stop()">Stop</md-button>
   </div>
 </md-toolbar>
 
-<md-content ng-if="NeuralStyle.options">
-  <p>Results are shown every <b>{{ NeuralStyle.options.save_iter }}</b> iteration(s)</p>
-  <p>Current iteration <b>{{ NeuralStyle.iterations }}</b></p>
+<md-content class="md-padding">
+  <p>Below you can configure which options should be used for neural style.</p>
+  <p>Note that only images within the project folder can be accessed.</p>
+<md-input-container ng-if="!NeuralStyle.started" class="md-block md-caption">
+  <label>Options</label>
+  <textarea ng-model="NeuralStyle.optionsStringified" rows="20"></textarea>
+</md-input-container>
+
 </md-content>
 
-<md-content layout="row" ng-if="NeuralStyle.inputContent">
-  <md-card layout="column">
-    <img ng-src="{{ NeuralStyle.inputContent }}" class="md-card-image">
+
+<md-content layout="row">
+  <md-card layout="column"
+  ng-style="{ 'max-width': NeuralStyle.options.image_size + 'px' }"
+  ng-style="{ 'max-height': NeuralStyle.inputContentHeight + 'px' }">
+    <img ng-src="{{ NeuralStyle.inputContent }}" id="inputContent" class="md-card-image">
     <md-card-footer>
       Input content
     </md-card-footer>
   </md-card>
-  <md-card layout="column">
+  <md-card layout="column" ng-style="{ 'max-height': NeuralStyle.inputContentHeight + 'px' }">
     <img ng-src="{{ NeuralStyle.inputStyle }}" class="md-card-image">
     <md-card-footer>
       Input style
@@ -26,11 +35,14 @@
   </md-card>
 </md-content>
 
-<md-content layout="row" ng-if="NeuralStyle.output">
+<md-content layout="row" ng-if="NeuralStyle.iterations">
   <md-card layout="column">
     <img ng-src="{{ NeuralStyle.output }}" class="md-card-image">
+    <md-card-content ng-if="!NeuralStyle.output">
+      Results are shown every <b>{{ NeuralStyle.options.save_iter }}</b> iteration(s)
+    </md-card-content>
     <md-card-footer>
-      Output
+      Output #{{ NeuralStyle.iterations }}
     </md-card-footer>
   </md-card>
 </md-content>

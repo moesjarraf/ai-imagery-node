@@ -2,7 +2,8 @@
   <div class="md-toolbar-tools">
     <h2 class="md-flex">Applying filters with "Synaptic"</h2>
     <span flex></span>
-    <md-button class="md-raised" ng-click="train()" ng-disabled="disableTrain">Start training</md-button>
+    <md-button ng-if="!started" class="md-raised" ng-click="start()">Start</md-button>
+    <md-button ng-if="started" class="md-raised" ng-click="stop()">Stop</md-button>
   </div>
 </md-toolbar>
 
@@ -28,7 +29,7 @@
       Test input
     </md-card-footer>
   </md-card>
-  <md-card layout="column" ng-show="trainingStarted">
+  <md-card layout="column" ng-show="iterations">
     <a class="thumbnail canvas-fix">        
       <canvas id="canvas-demo3" width="200" height="200"></canvas>
     </a>
@@ -36,7 +37,7 @@
       Test output #{{ iterations }}
     </md-card-footer>
   </md-card>
-  <md-card layout="column" ng-show="!trainingStarted">
+  <md-card layout="column" ng-show="!iterations">
     <img src="/src/assets/images/question_mark.png" class="md-card-image">
     <md-card-footer>
       Expected output

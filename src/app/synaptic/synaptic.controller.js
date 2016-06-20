@@ -15,7 +15,6 @@
     function SynapticCtrl ($rootScope, $scope, $timeout, $mdToast) {
       $scope.filter = "blur";
       $scope.url = "/src/assets/images/flower_after.png";
-      $scope.disableTrain = false;
 
       var perceptron = null;
       var index = 0;
@@ -39,19 +38,22 @@
         return imageData.data;
       }
 
-      var train = $scope.train = function () {
-        $scope.disableTrain = true;
+      $scope.start = function () {
         trial = 0;
         perceptron = new Architect.Perceptron(27,8,3);
         color_data = getData(document.getElementById('input'));
         filtered_data = getData(document.getElementById('output'));
         original_data = getData(document.getElementById('original'));
-        if (!$scope.trainingStarted) {
-          $scope.trainingStarted = true;
+        if (!$scope.started) {
+          $scope.started = true;
           iteration();
         }
 
         $mdToast.showSimple('Training started');
+      }
+
+      $scope.stop = function () {
+        $scope.started = false;
       }
 
       var iteration = function () {
@@ -111,7 +113,11 @@
         
         context.putImageData(imageData, 0, 0);
         
-        $timeout(iteration, 100);
+        if ($scope.started) {
+          var timeout = $timeout(iteration, 100);
+        } else {
+          $timeout.cancel(timeout);
+        }
       }
     }
 
